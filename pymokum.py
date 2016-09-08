@@ -3,8 +3,30 @@
 import sys
 from mokum_http import * 
 
+def help():
+	print sys.argv[0] + " usage:"
+
+
 def main():
-	whoami()
+	if len(sys.argv) == 1:
+		help()
+		return
+
+	command = sys.argv[1]
+	args = sys.argv[2:]
+
+	if command == "whoami":
+		whoami()
+	elif command == "hide":
+		hide_users(args)
+	elif  command == "unhide":
+		unhide_users(args)
+	elif  command == "block":
+		block_users(args)
+	elif  command == "unblock":
+		unblock_users(args)
+	else:
+		help()
 
 
 main()
