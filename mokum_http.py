@@ -1,6 +1,14 @@
-import common_headers
+from common_headers import *
+import httplib, urllib
 
-print " ### mokum_http.py ###"
+def httpCall(http_method,url, params):
+	headers = HEADERS
+	params = params
+	connection = httplib.HTTPSConnection(URL)
+	connection.request(http_method, url, "", headers)
+	response = connection.getresponse()
+	data = response.read()
 
-for header in common_headers.HEADERS.keys():
-		print header + ": " + common_headers.HEADERS[header]
+def whoami():
+	url = "/api/v1/whoami.json"
+	httpCall("GET", url,{}) 
