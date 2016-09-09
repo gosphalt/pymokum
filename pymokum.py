@@ -12,6 +12,8 @@ def main():
 		help()
 		return
 
+	print ";".join(sys.argv)
+
 	command = sys.argv[1]
 	args = sys.argv[2:]
 
@@ -25,6 +27,8 @@ def main():
 		block_users(args)
 	elif  command == "unblock":
 		unblock_users(args)
+	elif command == "post":
+		post(args)
 	else:
 		help()
 
