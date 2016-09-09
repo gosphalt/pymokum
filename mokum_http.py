@@ -60,4 +60,4 @@ def post(text, timelines=["user"], comment_disabled="false", nsfw="false"):
 	params["post"] = obj_post
 	params["_uuid"] = str(uuid.uuid4()) 
 
-	#print httpCall("POST",url, json.dumps(params))
+	print httpCall("POST",url, json.dumps(params))
