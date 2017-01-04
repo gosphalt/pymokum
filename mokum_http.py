@@ -14,31 +14,35 @@ def httpCall(http_method,url, params):
 def whoami():
 	url = "/api/v1/whoami.json"
 	data = httpCall("GET", url,{})
-	print data 
+	print data
 
 def hide_users(user_list):
 	for user in user_list:
 		print "hide user " + user + " ... "
 		url = "/api/v1/users/" + user + "/hide.json"
-		print httpCall("POST", url, {})
+		data = httpCall("POST", url, {})
+		print data
 
 def unhide_users(user_list):
 	for user in user_list:
 		print "unhide user " + user + " ... "
 		url = "/api/v1/users/" + user + "/hide.json"
-		print httpCall("DELETE", url, {})
+		data = httpCall("DELETE", url, {})
+		print data
 
 def block_users(user_list):
 	for user in user_list:
 		print "block user " + user + " ... "
 		url = "/api/v1/users/" + user + "/ban.json"
-		print httpCall("POST", url, {})
+		data = httpCall("POST", url, {})
+		print data
 
 def unblock_users(user_list):
 	for user in user_list:
 		print "unblock user " + user + " ... "
 		url = "/api/v1/users/" + user + "/ban.json"
-		print httpCall("DELETE", url, {})
+		data = httpCall("DELETE", url, {})
+		print data
 
 def post(text, timelines=["user"], comment_disabled="false", nsfw="false"):
 	url = "/api/v1/posts.json"
@@ -58,6 +62,7 @@ def post(text, timelines=["user"], comment_disabled="false", nsfw="false"):
 	obj_post["nsfw"] = nsfw
 
 	params["post"] = obj_post
-	params["_uuid"] = str(uuid.uuid4()) 
+	params["_uuid"] = str(uuid.uuid4())
 
-	print httpCall("POST",url, json.dumps(params))
+	data = httpCall("POST",url, json.dumps(params))
+	print data
